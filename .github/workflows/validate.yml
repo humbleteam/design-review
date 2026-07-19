@@ -1,0 +1,46 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate SKILL.md and README.md
+        run: |
+          set -euo pipefail
+
+          if [ ! -f SKILL.md ]; then
+            echo "SKILL.md is missing"
+            exit 1
+          fi
+
+          NAME=$(awk -F': *' '/^name:/ {print $2; exit}' SKILL.md)
+          DESCRIPTION=$(awk -F': *' '/^description:/ {print $2; exit}' SKILL.md)
+
+          if [ -z "$NAME" ]; then
+            echo "SKILL.md frontmatter is missing a non-empty name:"
+            exit 1
+          fi
+
+          if [ -z "$DESCRIPTION" ]; then
+            echo "SKILL.md frontmatter is missing a non-empty description:"
+            exit 1
+          fi
+
+          DIR_NAME=$(basename "$(pwd)")
+          if [ "$NAME" != "$DIR_NAME" ]; then
+            echo "SKILL.md name '$NAME' does not match repo directory name '$DIR_NAME'"
+            exit 1
+          fi
+
+          if [ ! -f README.md ] || ! grep -q "SKILL.md" README.md; then
+            echo "README.md does not link to SKILL.md"
+            exit 1
+          fi
+
+          echo "SKILL.md and README.md are valid"
