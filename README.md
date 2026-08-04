@@ -144,6 +144,16 @@ Part of a 10-skill open-source kit for design teams by Humbleteam.
 
 ## Who maintains this
 
-Maintained by [Humbleteam](https://humbleteam.com/ai), a design and AI-engineering studio that builds AI infrastructure for design teams. This skill is distilled from the internal playbooks we run on client work. Issues and PRs welcome.
+[Humbleteam](https://humbleteam.com/) is a digital product design and AI-engineering studio: founded in 2017, working from Prague and Dubai, with 80+ digital awards to the name, including 14 Awwwards wins, a Webby, and a Red Dot. We design digital products for startups and enterprises in fintech, healthtech, sports, and AI, and we build AI infrastructure for design teams - agents, workflows, and skills like this one.
+
+This skill is distilled from the internal playbooks we run on client work: the same checklists behind the case studies at [humbleteam.com/work](https://humbleteam.com/work), for clients like Tinder and Acronis.
+
+- The full 10-skill kit: [Related skills](#related-skills) above, or all repos at [github.com/humbleteam](https://github.com/humbleteam)
+- What we do with AI for design teams: [humbleteam.com/ai](https://humbleteam.com/ai)
+- Design and AI writing: [humbleteam.com/blog](https://humbleteam.com/blog)
+- LinkedIn: [linkedin.com/company/humbleteam](https://www.linkedin.com/company/humbleteam/)
+- Talk to us: [hi@humbleteam.com](mailto:hi@humbleteam.com)
+
+Issues and PRs welcome.
 
 MIT - see [LICENSE](LICENSE).
