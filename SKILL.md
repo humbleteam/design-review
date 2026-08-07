@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: Run a structured UX critique on a screenshot, URL, or HTML snippet - a 0-4 score, 3-6 prioritized issues each with Before/After/Why, and one citation per claim. Trigger phrases - "review this design", "critique this screen", "what's wrong with this UI", "score this design", "should I use a modal or a drawer". Do not use for WCAG-only accessibility audits (use accessibility-audit) or turning a mockup into a dev spec (use design-handoff).
+description: Run a structured UX critique on a screenshot, URL, or HTML snippet - a 0-4 score, 3-6 prioritized issues each with Before/After/Why, and one citation per claim. Given two or more variants, compares them on shared dimensions and names a winner. Trigger phrases - "review this design", "critique this screen", "what's wrong with this UI", "score this design", "which of these two is better", "did the redesign improve this", "should I use a modal or a drawer". Do not use for WCAG-only accessibility audits (use accessibility-audit) or turning a mockup into a dev spec (use design-handoff).
 ---
 
 # Design review
@@ -13,8 +13,9 @@ Before writing any critique, read [references/review-rubric.md](references/revie
 
 ## Step 1 - pick a mode
 
-- **Review mode**: an artifact is present in the request - a pasted screenshot, an image, a URL, or an HTML snippet in a code block.
-- **Advisory mode**: no artifact, and the message is a decision-shaped question ("should I use X or Y", "which is better", "how should I handle...").
+- **Review mode**: one artifact is present in the request - a pasted screenshot, an image, a URL, or an HTML snippet in a code block.
+- **Comparison mode**: two or more artifacts are present and the request asks which one wins ("A or B", "which of these is better", "did the redesign improve this"). Two artifacts and no decision question is two separate reviews, not a comparison - ask which the user wants before starting.
+- **Advisory mode**: no artifact, and the message is a decision-shaped question ("should I use X or Y", "how should I handle...").
 
 If the request has neither an artifact nor a decision question, ask what the user wants reviewed instead of guessing.
 
@@ -70,7 +71,43 @@ For each issue, write exactly three lines:
 
 Number issues in the order you want them fixed, most impactful first. The closing line always names the single highest-priority fix - never a generic wrap-up.
 
-## Step 3 - advisory mode
+## Step 3 - comparison mode
+
+Two or more artifacts, and the question is which one wins. Reviewing each one in full is the failure mode here: it returns two critiques and still no answer.
+
+### 3a. Score each artifact
+
+Use the bands from Step 2b, one score per artifact. The scores are a summary, not the argument - two variants can both score 3/4 and still have a clear winner.
+
+### 3b. Compare on shared dimensions
+
+Pick 3-5 dimensions that matter for the job these screens do - for example hierarchy, clarity of the primary action, scan cost, accessibility, information density. Judge every artifact against every dimension, and keep the wording observable, the same standard as `Before` in review mode. A point that applies to only one artifact is a review note, not a comparison line - hold it for the closing "Worth fixing in the winner" list.
+
+### 3c. Name a winner
+
+Always name one, even when the margin is small. A comparison that ends in "it depends" has not done the job. State what would change the call - the one fact about users, goals, or constraints that would flip it. If the honest answer is that the strongest screen takes parts from both, say which parts and from which variant.
+
+### 3d. Output format - comparison mode
+
+```
+## <A> vs <B> - <A> <X>/4, <B> <Y>/4
+
+| Dimension | <A> | <B> | Edge |
+|---|---|---|---|
+| <dimension> | <observable fact> | <observable fact> | <A or B> |
+| <dimension> | <observable fact> | <observable fact> | <A or B> |
+| <dimension> | <observable fact> | <observable fact> | <A or B> |
+
+**Winner: <A or B>.** <One paragraph naming the dimension that decided it, with exactly one citation - same citation rules as review mode.>
+
+**What would change the call:** <the one fact that would flip the decision>
+
+**Worth fixing in the winner:** <1-3 issues, Before/After/Why, only if they survive the impact bar from Step 2c>
+```
+
+Every artifact keeps its own column for its whole life in the table - never merge two variants into one "both" cell, because the point of the table is that the eye can run down one column.
+
+## Step 4 - advisory mode
 
 No artifact, a decision question instead. Skip the Before/After/Why structure entirely.
 
@@ -99,11 +136,13 @@ If you want specifics, share a screenshot or a URL and I'll do a full review.
 | Artifact is already strong (would score 4/4) | Still produce the full numbered list - 2-3 items, framed as polish/nice-to-have, not as blockers. Never return an empty critique. |
 | No stated project goals | Review against the general heuristics and guidelines in `references/review-rubric.md` alone. Do not invent goals or a target audience. |
 | Advisory question too vague ("which is better?" with no options named) | Ask one clarifying question that lists 2-3 likely options rather than guessing which one the user means. |
-| Multiple distinct screens in one screenshot | Ask which one to review, or offer to review each separately if the user wants both. |
+| Multiple distinct screens in one screenshot, no comparison asked for | Ask which one to review, or offer to review each separately if the user wants both. Two variants of the same screen with a "which is better" attached is comparison mode instead - do not ask the user to pick one for you. |
+| One artifact in a comparison is unreadable or unreachable | Do not compare. Say which one failed and ask for a replacement - a comparison where half the evidence is a guess is worse than no comparison. |
+| The artifacts in a comparison are different screens, not variants of one (our pricing page vs a competitor's) | Comparison mode still applies, but the dimensions must be about the job both screens do, not about features only one of them has. Say so in one line before the table. |
 
-## Rules that hold in both modes
+## Rules that hold in every mode
 
 - One citation per issue or claim. Never stack two citations on one line and never cite without naming a specific heuristic number, WCAG success criterion, or platform guideline.
-- Every `After` (review mode) or claim (advisory mode) must be concrete enough to hand to a developer or designer with no follow-up question.
+- Every `After` (review mode), verdict (comparison mode), or claim (advisory mode) must be concrete enough to hand to a developer or designer with no follow-up question.
 - Never invent a source, a study, or a statistic. If you are not sure a claim is grounded, cut the claim.
 - Keep the tone direct and factual. No hedging language like "this might possibly be an issue" - either it is an issue worth the 3-6 slot or it is not.

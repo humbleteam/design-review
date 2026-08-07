@@ -12,7 +12,7 @@
 
 </div>
 
-design-review takes a UI screenshot, a live URL, or an HTML snippet and returns a structured critique: a 0-4 ship-readiness score, 3 to 6 prioritized issues, and a Before/After/Why line for each one. The rule that keeps it useful is a citation floor - every fix names a Nielsen heuristic, a WCAG 2.2 success criterion, or a named platform guideline, never a bare opinion. With no artifact to review, the skill switches to advisory mode: one direct recommendation, cited reasoning.
+design-review takes a UI screenshot, a live URL, or an HTML snippet and returns a structured critique: a 0-4 ship-readiness score, 3 to 6 prioritized issues, and a Before/After/Why line for each one. The rule that keeps it useful is a citation floor - every fix names a Nielsen heuristic, a WCAG 2.2 success criterion, or a named platform guideline, never a bare opinion. Hand it two or more variants and it switches to comparison mode: a score each, a shared-dimension table, and a named winner. With no artifact at all, it switches to advisory mode: one direct recommendation, cited reasoning.
 
 ## Table of contents
 
@@ -31,6 +31,7 @@ design-review takes a UI screenshot, a live URL, or an HTML snippet and returns 
 - Reviews a screenshot, a live URL, or an HTML snippet and returns a 0-4 ship-readiness score.
 - Picks the 3-6 most impactful issues instead of listing every flaw, so the critique stays actionable.
 - Writes each issue as Before / After / Why - an observable fact, a fix doable in under an hour, one citation.
+- Compares two or more variants on shared dimensions and names a winner, instead of returning two separate critiques and no answer.
 - Switches to advisory mode for open decision questions ("modal or a full page for account deletion?") with no artifact attached.
 - Asks for a better screenshot or a working URL when the input is unreadable.
 - Still surfaces 2-3 polish items on a design that would score 4/4 - never an empty pass.
@@ -57,6 +58,7 @@ To verify: restart Claude Code and ask it to list its skills. Skills load from `
 
 - **"Review this screenshot of our onboarding flow."** (image attached) - review mode: scores it 0-4, returns 3-6 cited issues.
 - **"What's wrong with https://example.com/pricing?"** - review mode against a live URL instead of a screenshot.
+- **"Which of these two checkout variants is better?"** (two images attached) - comparison mode: a score each, a dimension table, and a named winner.
 - **"Should I use a modal or a full-page flow for account deletion?"** - no artifact, so advisory mode: one recommendation, up to 5 cited bullets.
 
 ## Example output
@@ -94,7 +96,7 @@ likely to cause a failed submit, and a one-line copy change.
 
 ## How it works
 
-- **Mode detection first.** An attached screenshot, URL, or HTML snippet triggers review mode; a decision-shaped question with no artifact triggers advisory mode.
+- **Mode detection first.** One attached screenshot, URL, or HTML snippet triggers review mode; two or more plus a "which one wins" question triggers comparison mode; a decision-shaped question with no artifact triggers advisory mode.
 - **The rubric loads before the critique.** `references/review-rubric.md` holds the exact 0-4 bands and citation table, so scoring stays consistent run to run.
 - **Score before listing issues.** 0 is broken, 4 is ship-ready. Score generously when the design serves the stated project goals; harshly when it ignores them.
 - **Cap the issue list at 6, ranked by impact** - listing every flaw is a failure mode, not thoroughness.
@@ -102,6 +104,7 @@ likely to cause a failed submit, and a one-line copy change.
 - **After fits inside an hour** - concrete enough to hand to a developer with no follow-up question.
 - **Why is exactly one citation:** a Nielsen heuristic, a WCAG 2.2 success criterion, or a named platform guideline - never an uncited opinion.
 - **The close names the one fix that matters most**, not a generic summary.
+- **Comparison mode judges variants against each other**, not one after the other: 3-5 shared dimensions, one row per dimension, an edge called on each, and a named winner with the one fact that would flip it.
 - **Advisory mode compresses the same discipline** into one recommendation plus up to 5 cited bullets, asking one clarifying question instead of guessing when a request is too open.
 
 ## How is this different from just asking the model?
@@ -124,6 +127,9 @@ This skill uses a 0-4 scale: 0 is broken (basic accessibility, hierarchy, or tru
 
 **Can this review a live website instead of a screenshot?**
 Yes, give it a URL. If the URL is unreachable - an auth wall or a 404 - it asks for a screenshot instead of guessing.
+
+**How do I compare two design variants and pick a winner?**
+Attach both and ask which one wins. That is comparison mode: each variant gets its own 0-4 score, then 3-5 shared dimensions are judged side by side in a table, and one variant is named the winner along with the fact that would change the call. It does not hand back two separate reviews, because two reviews still leave you to make the decision yourself. The same mode handles a before-and-after pair when you want to know whether a redesign actually improved anything.
 
 **What if I don't have a design yet, just a decision to make?**
 That's advisory mode: a direct question like "modal or full page for account deletion?" gets one recommendation plus up to 5 cited bullets.
