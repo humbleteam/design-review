@@ -33,6 +33,7 @@ design-review takes a UI screenshot, a live URL, or an HTML snippet and returns 
 - Writes each issue as Before / After / Why - an observable fact, a fix doable in under an hour, one citation.
 - Compares two or more variants on shared dimensions and names a winner, instead of returning two separate critiques and no answer.
 - Switches to advisory mode for open decision questions ("modal or a full page for account deletion?") with no artifact attached.
+- Answers a decision question that arrives with a screen attached, using the screen as evidence, instead of handing back a critique that never reaches the question.
 - Asks for a better screenshot or a working URL when the input is unreadable.
 - Still surfaces 2-3 polish items on a design that would score 4/4 - never an empty pass.
 
@@ -60,6 +61,7 @@ To verify: restart Claude Code and ask it to list its skills. Skills load from `
 - **"What's wrong with https://example.com/pricing?"** - review mode against a live URL instead of a screenshot.
 - **"Which of these two checkout variants is better?"** (two images attached) - comparison mode: a score each, a dimension table, and a named winner.
 - **"Should I use a modal or a full-page flow for account deletion?"** - no artifact, so advisory mode: one recommendation, up to 5 cited bullets.
+- **"Here's our checkout - should the address form be a modal or a drawer?"** (one image attached) - grounded advisory mode: the question gets answered first, with facts read off the screen as the evidence.
 
 ## Example output
 
@@ -94,9 +96,36 @@ Fix this first: the missing password guidance is the highest-cost fix - most
 likely to cause a failed submit, and a one-line copy change.
 ```
 
+A decision question with a screen attached returns the other shape - the answer first, the
+critique only if it bears on the decision. Prompt: "Here's our checkout. Should the address
+form be a modal or a drawer?" (screenshot attached):
+
+```
+Recommendation: keep the address form inline on the checkout page; neither a
+modal nor a drawer earns its cost here.
+
+- The form is 9 fields deep and the page already carries a sticky order
+  summary, so an overlay would cover the one element people check while
+  typing an address. Why: Nielsen heuristic #1 - visibility of system status
+  - the total is the status people are tracking during checkout.
+- A drawer at this height scrolls inside its own container on a 390px-wide
+  screen, which puts two scroll regions on one screen. Why: Apple Human
+  Interface Guidelines - sheets - a sheet that scrolls internally competes
+  with the page behind it.
+- General guidance, not visible in this screenshot: if most of your traffic
+  is returning customers with a saved address, the question changes - the
+  form becomes a confirm step, and a modal is defensible.
+
+What in the artifact decided it: the sticky order summary sits in the region
+a modal or drawer would cover.
+
+Also worth fixing: the "Continue" button is below the fold on the attached
+viewport, which hides the exit from the step being discussed.
+```
+
 ## How it works
 
-- **Mode detection first.** One attached screenshot, URL, or HTML snippet triggers review mode; two or more plus a "which one wins" question triggers comparison mode; a decision-shaped question with no artifact triggers advisory mode.
+- **Mode detection first, in a fixed order.** Two or more artifacts plus a "which one wins" question triggers comparison mode; an artifact plus a decision question triggers grounded advisory mode; one artifact and no decision question triggers review mode; a decision question with no artifact triggers advisory mode.
 - **The rubric loads before the critique.** `references/review-rubric.md` holds the exact 0-4 bands and citation table, so scoring stays consistent run to run.
 - **Score before listing issues.** 0 is broken, 4 is ship-ready. Score generously when the design serves the stated project goals; harshly when it ignores them.
 - **Cap the issue list at 6, ranked by impact** - listing every flaw is a failure mode, not thoroughness.
@@ -106,6 +135,7 @@ likely to cause a failed submit, and a one-line copy change.
 - **The close names the one fix that matters most**, not a generic summary.
 - **Comparison mode judges variants against each other**, not one after the other: 3-5 shared dimensions, one row per dimension, an edge called on each, and a named winner with the one fact that would flip it.
 - **Advisory mode compresses the same discipline** into one recommendation plus up to 5 cited bullets, asking one clarifying question instead of guessing when a request is too open.
+- **An attached screen raises the evidence bar, it does not change the question.** In grounded advisory mode every claim the screen can settle names an observable fact from it, the one fact that carried the call is stated outright, and anything the screen cannot settle is labeled as general guidance rather than dressed up as an observation.
 
 ## How is this different from just asking the model?
 
@@ -133,6 +163,9 @@ Attach both and ask which one wins. That is comparison mode: each variant gets i
 
 **What if I don't have a design yet, just a decision to make?**
 That's advisory mode: a direct question like "modal or full page for account deletion?" gets one recommendation plus up to 5 cited bullets.
+
+**I have a screenshot and a decision to make - which mode is that?**
+Grounded advisory. The question decides the mode and the screen becomes the evidence, so you get the answer first, with the observable facts it rests on, and at most three fixes that bear on that decision. It is deliberately not a review: a critique that never reaches the question you asked is a well-formed way of not answering. Ask for a full review separately and you get the score and the 3-6 issues as well. If the screen does not show the thing you asked about, it says so instead of inferring it from what is around it.
 
 ## Related skills
 

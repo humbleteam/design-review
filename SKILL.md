@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: Run a structured UX critique on a screenshot, URL, or HTML snippet - a 0-4 score, 3-6 prioritized issues each with Before/After/Why, and one citation per claim. Given two or more variants, compares them on shared dimensions and names a winner. Trigger phrases - "review this design", "critique this screen", "what's wrong with this UI", "score this design", "which of these two is better", "did the redesign improve this", "should I use a modal or a drawer". Do not use for WCAG-only accessibility audits (use accessibility-audit) or turning a mockup into a dev spec (use design-handoff).
+description: Run a structured UX critique on a screenshot, URL, or HTML snippet - a 0-4 score, 3-6 prioritized issues each with Before/After/Why, and one citation per claim. Given two or more variants, compares them on shared dimensions and names a winner. Given a screen plus a decision question, answers the question with the screen as evidence instead of returning a critique. Trigger phrases - "review this design", "critique this screen", "what's wrong with this UI", "score this design", "which of these two is better", "did the redesign improve this", "should I use a modal or a drawer". Do not use for WCAG-only accessibility audits (use accessibility-audit) or turning a mockup into a dev spec (use design-handoff).
 ---
 
 # Design review
@@ -13,11 +13,18 @@ Before writing any critique, read [references/review-rubric.md](references/revie
 
 ## Step 1 - pick a mode
 
-- **Review mode**: one artifact is present in the request - a pasted screenshot, an image, a URL, or an HTML snippet in a code block.
-- **Comparison mode**: two or more artifacts are present and the request asks which one wins ("A or B", "which of these is better", "did the redesign improve this"). Two artifacts and no decision question is two separate reviews, not a comparison - ask which the user wants before starting.
-- **Advisory mode**: no artifact, and the message is a decision-shaped question ("should I use X or Y", "how should I handle...").
+Two facts settle it. Is an **artifact** attached - a pasted screenshot, an image, a URL, or an HTML snippet in a code block? And does the message ask a **decision question** - a choice between patterns, components, or flows ("should I use X or Y", "how should I handle...")? "Review this", "is this any good" and "what's wrong with this" are not decision questions: they ask about the artifact's own quality, which is what review mode answers.
 
-If the request has neither an artifact nor a decision question, ask what the user wants reviewed instead of guessing.
+Take the first match:
+
+1. **Comparison mode**: two or more artifacts, and the question asks which of them wins ("A or B", "which of these is better", "did the redesign improve this").
+2. **Grounded advisory mode**: at least one artifact, and a decision question the artifact does not itself answer ("here is our checkout - should the address form be a modal or a drawer?"). The question governs the mode; the artifact is evidence, not the subject.
+3. **Review mode**: one artifact, no decision question.
+4. **Advisory mode**: no artifact, a decision question.
+
+Two or more artifacts and no decision question is two separate reviews, not a comparison - ask which the user wants before starting. If the request has neither an artifact nor a decision question, ask what the user wants reviewed instead of guessing.
+
+An attached artifact never silently downgrades a question into a critique. Answering a decision question with a full review is the same failure as answering a comparison with two critiques: the output is well formed, and the question the user asked is still open.
 
 ## Step 2 - review mode
 
@@ -127,6 +134,30 @@ No artifact, a decision question instead. Skip the Before/After/Why structure en
 If you want specifics, share a screenshot or a URL and I'll do a full review.
 ```
 
+## Step 5 - grounded advisory mode
+
+A decision question with an artifact attached. The answer keeps the advisory shape; the artifact raises the evidence bar, it does not change what is being asked.
+
+- Answer the question first, in one sentence. The critique, if there is one at all, comes after.
+- Every claim the artifact can settle rests on an observable fact from it, to the same standard as `Before` in review mode: "the address form is nine fields deep and the page already carries a sticky order summary", not "the form looks long". Claims the artifact cannot settle - traffic, device mix, what users do next - are still allowed as general guidance, but say which they are rather than dressing them as observations.
+- Name the one observable fact that carried the recommendation. If the artifact flips the answer you would have given without it, say so plainly: that is the entire value of having it attached.
+- If the artifact does not show the element the question is about, say so in one line and answer from general guidance. Never infer the missing element from the surrounding layout.
+- Close with at most 3 review-mode issues, and only ones that bear on the decision. Everything else waits for a full review - offer it in the closing line rather than smuggling an unrequested critique in under the answer.
+
+### Output format - grounded advisory mode
+
+```
+**Recommendation:** <one-sentence direct answer to the question that was asked>
+
+- <Claim 1, resting on an observable fact from the artifact>. Why: <citation> - <one-phrase rationale>.
+- <Claim 2>. Why: <citation> - <one-phrase rationale>.
+- <Claim 3>. Why: <citation> - <one-phrase rationale>.
+
+**What in the artifact decided it:** <the single observable fact that carried the recommendation>
+
+**Also worth fixing:** <0-3 issues in Before/After/Why, only ones that bear on this decision - or "Nothing that bears on this decision. Ask for a full review if you want the rest.">
+```
+
 ## Edge cases
 
 | Situation | What to do |
@@ -139,10 +170,13 @@ If you want specifics, share a screenshot or a URL and I'll do a full review.
 | Multiple distinct screens in one screenshot, no comparison asked for | Ask which one to review, or offer to review each separately if the user wants both. Two variants of the same screen with a "which is better" attached is comparison mode instead - do not ask the user to pick one for you. |
 | One artifact in a comparison is unreadable or unreachable | Do not compare. Say which one failed and ask for a replacement - a comparison where half the evidence is a guess is worse than no comparison. |
 | The artifacts in a comparison are different screens, not variants of one (our pricing page vs a competitor's) | Comparison mode still applies, but the dimensions must be about the job both screens do, not about features only one of them has. Say so in one line before the table. |
+| An artifact is attached and the question is a decision question ("here is the screen - modal or drawer?") | Grounded advisory mode (Step 5). Answer the question first, with the artifact as evidence. A full review the user did not ask for leaves the question open, however well formed it is. |
+| A decision question whose subject is not visible in the attached artifact (asked about the empty state, sent the filled one) | Say in one line that the artifact does not show it, then answer from general guidance and cite as usual. Do not infer the missing element from the surrounding layout. |
+| An artifact plus "is this any good?" or "what's wrong with this" | Review mode. These ask about the artifact's own quality rather than for a choice between options, so they are not decision questions. |
 
 ## Rules that hold in every mode
 
 - One citation per issue or claim. Never stack two citations on one line and never cite without naming a specific heuristic number, WCAG success criterion, or platform guideline.
-- Every `After` (review mode), verdict (comparison mode), or claim (advisory mode) must be concrete enough to hand to a developer or designer with no follow-up question.
+- Every `After` (review mode), verdict (comparison mode), or claim (advisory and grounded advisory modes) must be concrete enough to hand to a developer or designer with no follow-up question.
 - Never invent a source, a study, or a statistic. If you are not sure a claim is grounded, cut the claim.
 - Keep the tone direct and factual. No hedging language like "this might possibly be an issue" - either it is an issue worth the 3-6 slot or it is not.
