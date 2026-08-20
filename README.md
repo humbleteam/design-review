@@ -126,7 +126,7 @@ viewport, which hides the exit from the step being discussed.
 ## How it works
 
 - **Mode detection first, in a fixed order.** Two or more artifacts plus a "which one wins" question triggers comparison mode; an artifact plus a decision question triggers grounded advisory mode; one artifact and no decision question triggers review mode; a decision question with no artifact triggers advisory mode.
-- **The rubric loads before the critique.** `references/review-rubric.md` holds the exact 0-4 bands and citation table, so scoring stays consistent run to run.
+- **The rubric loads before the critique.** `references/review-rubric.md` holds the exact 0-4 bands, the tie-break for a screen that fits two of them, and the citation table, so scoring stays consistent run to run.
 - **Score before listing issues.** 0 is broken, 4 is ship-ready. Score generously when the design serves the stated project goals; harshly when it ignores them.
 - **Cap the issue list at 6, ranked by impact** - listing every flaw is a failure mode, not thoroughness.
 - **Before is a fact, never a feeling:** "12 elements inside a 320px card with no grouping," not "this feels cluttered."
@@ -153,7 +153,7 @@ Screenshot the frame and paste it into Claude Code, then ask for a review. A pas
 At minimum, Nielsen's 10 heuristics: system status, real-world match, user control, consistency, error prevention, recognition over recall, flexibility, minimalist design, error recovery, help. `references/review-rubric.md` has the full table.
 
 **How do I score design quality?**
-This skill uses a 0-4 scale: 0 is broken (basic accessibility, hierarchy, or trust violations), 4 is ship-ready. Bands live in `references/review-rubric.md`. Score generously when a design serves its stated goals, harshly when it ignores them.
+This skill uses a 0-4 scale: 0 is broken (basic accessibility, hierarchy, or trust violations), 4 is ship-ready. Bands live in `references/review-rubric.md`, along with the rule for the common case where two bands fit the same screen: the cost of the fix decides - a rebuild, a restructure, a craft pass, one to three discrete fixes, or nothing material - and a count of violations is evidence rather than a threshold, so five small ones on a sound structure score better than a single one that blocks the task. Score generously when a design serves its stated goals, harshly when it ignores them.
 
 **Can this review a live website instead of a screenshot?**
 Yes, give it a URL. If the URL is unreachable - an auth wall or a 404 - it asks for a screenshot instead of guessing.

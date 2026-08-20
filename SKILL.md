@@ -9,7 +9,7 @@ Critique a UI artifact or answer a design decision question, always with a citat
 
 ## Step 0 - load the rubric
 
-Before writing any critique, read [references/review-rubric.md](references/review-rubric.md) if it is not already in context. It has the 0-4 scoring bands and the compact table of Nielsen's 10 usability heuristics you cite from. Do not skip this even if you know the heuristics - the exact wording of the bands matters for consistent scoring across runs.
+Before writing any critique, read [references/review-rubric.md](references/review-rubric.md) if it is not already in context. It has the 0-4 scoring bands, the rule that picks one band when two of them describe the same screen, and the compact table of Nielsen's 10 usability heuristics you cite from. Do not skip this even if you know the heuristics - the exact wording of the bands matters for consistent scoring across runs, and the tie-break is what keeps two runs on one screen from returning two different numbers.
 
 ## Step 1 - pick a mode
 
@@ -45,6 +45,8 @@ Assign one score before listing issues. Use these bands exactly:
 - **4/4 - ship-ready**: nothing material to fix, only minor preferences.
 
 Score generously when the design serves the project goals the user stated, if they stated any. Score harshly when it ignores them.
+
+More than one band will fit most screens. When two do, the cost of the fix decides which one wins - a rebuild, a restructure, a craft pass, 1-3 discrete fixes, or nothing material - and the violation count in band 1 is evidence of a structural problem, never a threshold that promotes a screen on its own. Five minor violations on a sound structure is a 2/4; one violation that blocks a task or fails an accessibility floor can be a 1/4 or 0/4 by itself. Count over what the review found, not over the 3-6 issues it reports - the cap in 2c decides what gets printed, not what the screen scores. Full rule in `references/review-rubric.md`.
 
 ### 2c. Pick 3-6 issues, ranked by impact
 

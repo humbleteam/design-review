@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0] - 2026-08-20
+
+- Added a band-precedence rule to `references/review-rubric.md`. Two bands fit most screens - a sound structure with six small heuristic violations matches band 1 by its count and band 2 by its description - and "assign exactly one score" never said which wins. The score is the first line a review prints and the number two runs get compared on, so the same screen could come back 1/4 one day and 2/4 the next without either being wrong.
+- The cost of the fix now decides the band: a rebuild (0), a restructure (1), a craft pass over an intact structure (2), one to three discrete fixes (3), nothing material (4). When two bands fit, the one whose fix cost matches the screen wins.
+- Stated that the "five or more heuristic violations" in band 1 is evidence, not a threshold. Five minor violations on a structurally sound screen is a 2/4, and severity runs the other way too: one violation that blocks a task, breaks trust, or fails an accessibility floor is enough for 1/4 or 0/4 on its own. The count had no severity weighting and no stated denominator before this.
+- Named the denominator: the count is over everything the review found, not over the 3-6 issues it prints. Step 2c is a reporting cap and never a scoring one.
+- Step 0, step 2b, the README how-it-works line and the scoring FAQ answer all carry the rule, so every statement of it agrees.
+
 ## [1.2.0] - 2026-08-13
 
 - Added grounded advisory mode for a decision question that arrives with an artifact attached ("here is our checkout - should the address form be a modal or a drawer?"). Mode selection routed on the artifact alone, so any attachment forced review mode, and review mode has no slot for an answer: the user got a score and 3-6 Before/After issues, and the closing line is required to name the top fix rather than wrap up, so the question they asked went unanswered. Advisory mode was unreachable because it required no artifact, and the clarify fallback only fires when neither an artifact nor a question is present - leaving no legal move that answers.

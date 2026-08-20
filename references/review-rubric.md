@@ -1,6 +1,6 @@
 # Review rubric
 
-Read this file before scoring anything. It has the 0-4 scoring bands and a compact table of Nielsen's 10 usability heuristics to cite from. Both are referenced from `SKILL.md` step 0.
+Read this file before scoring anything. It has the 0-4 scoring bands, the rule for picking one band when two of them fit, and a compact table of Nielsen's 10 usability heuristics to cite from. All three are referenced from `SKILL.md` step 0.
 
 ## Scoring bands (0-4)
 
@@ -15,6 +15,16 @@ Assign exactly one score. The bands describe the artifact as a whole, not any si
 | 4/4 | Ship-ready | Nothing material to fix. Any remaining notes are minor preferences, not defects. |
 
 Score generously when the design serves the project goals the user stated, if they stated any - a screen that looks plain but nails a stated constraint (speed, a technical limitation, a specific user need) should not be penalized for looking plain. Score harshly when the design ignores stated goals outright.
+
+### Choosing one band when two of them fit
+
+Two bands describe the same screen more often than not. A screen with a sound structure and six small heuristic violations matches band 1 by its count and band 2 by its description, and "assign exactly one score" does not say which wins. The score is the first thing a review prints and the thing two runs get compared on, so an unsettled tie is how the same screen comes back 1/4 on Monday and 2/4 on Friday. Two rules settle it.
+
+**The cost of the fix decides the band. The number of violations does not.** Read the bands as a ladder of what it would take to make the screen shippable: a rebuild (0), a restructure that keeps the idea and little else (1), the same structure with the craft redone (2), one to three discrete fixes (3), nothing material (4). When two bands fit, the one whose fix cost matches the screen wins.
+
+**A count is evidence, not a threshold.** The "five or more" in band 1 describes what a flat hierarchy and placeholder copy usually look like once counted. It does not promote a screen on its own: five minor violations on a structurally sound screen is a 2/4. Severity runs the other way too - one violation that blocks a task, breaks trust, or fails an accessibility floor is enough for 1/4 or 0/4 by itself.
+
+Count over everything the review found, not over the issues it reports. The 3-6 cap in `SKILL.md` step 2c is a reporting cap: it decides what gets printed, never what the screen scores.
 
 ## Nielsen's 10 usability heuristics
 
