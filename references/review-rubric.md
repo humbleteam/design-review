@@ -24,7 +24,7 @@ Two bands describe the same screen more often than not. A screen with a sound st
 
 **A count is evidence, not a threshold.** The "five or more" in band 1 describes what a flat hierarchy and placeholder copy usually look like once counted. It does not promote a screen on its own: five minor violations on a structurally sound screen is a 2/4. Severity runs the other way too - one violation that blocks a task, breaks trust, or fails an accessibility floor is enough for 1/4 or 0/4 by itself.
 
-Count over everything the review found, not over the issues it reports. The 3-6 cap in `SKILL.md` step 2c is a reporting cap: it decides what gets printed, never what the screen scores.
+Count over everything the review found, not over the issues it reports. The cap of 6 in `SKILL.md` step 2c is a reporting cap: it decides what gets printed, never what the screen scores. It is a cap and not a quota, so this band reporting a single polish item is the rule working rather than a review that stopped early.
 
 ## Nielsen's 10 usability heuristics
 
@@ -50,4 +50,4 @@ A citation does not have to be a Nielsen heuristic. These are equally valid, and
 - **WCAG 2.2 success criteria** - cite by number and short name, e.g. `WCAG 2.2 SC 1.4.3 (contrast minimum)` or `WCAG 2.2 SC 2.5.8 (target size minimum)`. Use these for anything involving contrast, focus order, target size, or assistive technology.
 - **Named platform guidelines** - cite the guideline by name and topic, e.g. `Apple Human Interface Guidelines - navigation bars` or `Material Design - elevation`. Use these when the issue is platform-specific (a component that violates iOS or Android conventions).
 
-Do not cite a source you have not actually checked the design against. If none of the above fit an observation cleanly, the observation is probably a taste preference, not one of the 3-6 issues to report.
+Do not cite a source you have not actually checked the design against. If none of the above fit an observation cleanly, the observation is probably a taste preference, not one of the issues to report.

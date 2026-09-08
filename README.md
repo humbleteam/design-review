@@ -12,7 +12,7 @@
 
 </div>
 
-design-review takes a UI screenshot, a live URL, or an HTML snippet and returns a structured critique: a 0-4 ship-readiness score, 3 to 6 prioritized issues, and a Before/After/Why line for each one. The rule that keeps it useful is a citation floor - every fix names a Nielsen heuristic, a WCAG 2.2 success criterion, or a named platform guideline, never a bare opinion. Hand it two or more variants and it switches to comparison mode: a score each, a shared-dimension table, and a named winner. With no artifact at all, it switches to advisory mode: one direct recommendation, cited reasoning.
+design-review takes a UI screenshot, a live URL, or an HTML snippet and returns a structured critique: a 0-4 ship-readiness score, up to 6 prioritized issues, and a Before/After/Why line for each one. The rule that keeps it useful is a citation floor - every fix names a Nielsen heuristic, a WCAG 2.2 success criterion, or a named platform guideline, never a bare opinion. Hand it two or more variants and it switches to comparison mode: a score each, a shared-dimension table, and a named winner. With no artifact at all, it switches to advisory mode: one direct recommendation, cited reasoning.
 
 ## Table of contents
 
@@ -29,7 +29,7 @@ design-review takes a UI screenshot, a live URL, or an HTML snippet and returns 
 ## What it does
 
 - Reviews a screenshot, a live URL, or an HTML snippet and returns a 0-4 ship-readiness score.
-- Picks the 3-6 most impactful issues instead of listing every flaw, so the critique stays actionable.
+- Caps the list at the 6 most impactful issues instead of listing every flaw, and never pads a thin list to reach a count, so the critique stays actionable.
 - Writes each issue as Before / After / Why - an observable fact, a fix doable in under an hour, one citation.
 - Compares two or more variants on shared dimensions and names a winner, instead of returning two separate critiques and no answer.
 - Switches to advisory mode for open decision questions ("modal or a full page for account deletion?") with no artifact attached.
@@ -57,7 +57,7 @@ To verify: restart Claude Code and ask it to list its skills. Skills load from `
 
 ## Usage
 
-- **"Review this screenshot of our onboarding flow."** (image attached) - review mode: scores it 0-4, returns 3-6 cited issues.
+- **"Review this screenshot of our onboarding flow."** (image attached) - review mode: scores it 0-4, returns up to 6 cited issues.
 - **"What's wrong with https://example.com/pricing?"** - review mode against a live URL instead of a screenshot.
 - **"Which of these two checkout variants is better?"** (two images attached) - comparison mode: a score each, a dimension table, and a named winner.
 - **"Should I use a modal or a full-page flow for account deletion?"** - no artifact, so advisory mode: one recommendation, up to 5 cited bullets.
@@ -128,7 +128,7 @@ viewport, which hides the exit from the step being discussed.
 - **Mode detection first, in a fixed order.** Two or more artifacts plus a "which one wins" question triggers comparison mode; an artifact plus a decision question triggers grounded advisory mode; one artifact and no decision question triggers review mode; a decision question with no artifact triggers advisory mode.
 - **The rubric loads before the critique.** `references/review-rubric.md` holds the exact 0-4 bands, the tie-break for a screen that fits two of them, and the citation table, so scoring stays consistent run to run.
 - **Score before listing issues.** 0 is broken, 4 is ship-ready. Score generously when the design serves the stated project goals; harshly when it ignores them.
-- **Cap the issue list at 6, ranked by impact** - listing every flaw is a failure mode, not thoroughness.
+- **Cap the issue list at 6, ranked by impact** - listing every flaw is a failure mode, not thoroughness. The cap is not a quota and there is no minimum: a screen that yields two issues gets two, with one line saying why the list is short, because padding to a count is the same failure reached from the other side.
 - **Before is a fact, never a feeling:** "12 elements inside a 320px card with no grouping," not "this feels cluttered."
 - **After fits inside an hour** - concrete enough to hand to a developer with no follow-up question.
 - **Why is exactly one citation:** a Nielsen heuristic, a WCAG 2.2 success criterion, or a named platform guideline - never an uncited opinion.
@@ -147,7 +147,7 @@ A bare "review this design" prompt returns a wall of adjectives - "the hierarchy
 Yes, with limits. This skill scores a screenshot, URL, or HTML snippet against Nielsen's 10 heuristics and WCAG 2.2. It reads pixels and markup, not user behavior, so it catches heuristic and accessibility gaps but cannot replace a usability test.
 
 **How do I review a Figma design with Claude?**
-Screenshot the frame and paste it into Claude Code, then ask for a review. A pasted screenshot is treated the same as a live URL: a 0-4 score plus 3-6 cited issues.
+Screenshot the frame and paste it into Claude Code, then ask for a review. A pasted screenshot is treated the same as a live URL: a 0-4 score plus up to 6 cited issues.
 
 **What is a good design review checklist?**
 At minimum, Nielsen's 10 heuristics: system status, real-world match, user control, consistency, error prevention, recognition over recall, flexibility, minimalist design, error recovery, help. `references/review-rubric.md` has the full table.
@@ -165,7 +165,7 @@ Attach both and ask which one wins. That is comparison mode: each variant gets i
 That's advisory mode: a direct question like "modal or full page for account deletion?" gets one recommendation plus up to 5 cited bullets.
 
 **I have a screenshot and a decision to make - which mode is that?**
-Grounded advisory. The question decides the mode and the screen becomes the evidence, so you get the answer first, with the observable facts it rests on, and at most three fixes that bear on that decision. It is deliberately not a review: a critique that never reaches the question you asked is a well-formed way of not answering. Ask for a full review separately and you get the score and the 3-6 issues as well. If the screen does not show the thing you asked about, it says so instead of inferring it from what is around it.
+Grounded advisory. The question decides the mode and the screen becomes the evidence, so you get the answer first, with the observable facts it rests on, and at most three fixes that bear on that decision. It is deliberately not a review: a critique that never reaches the question you asked is a well-formed way of not answering. Ask for a full review separately and you get the score and the full issue list as well. If the screen does not show the thing you asked about, it says so instead of inferring it from what is around it.
 
 ## Related skills
 

@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: Run a structured UX critique on a screenshot, URL, or HTML snippet - a 0-4 score, 3-6 prioritized issues each with Before/After/Why, and one citation per claim. Given two or more variants, compares them on shared dimensions and names a winner. Given a screen plus a decision question, answers the question with the screen as evidence instead of returning a critique. Trigger phrases - "review this design", "critique this screen", "what's wrong with this UI", "score this design", "which of these two is better", "did the redesign improve this", "should I use a modal or a drawer". Do not use for WCAG-only accessibility audits (use accessibility-audit) or turning a mockup into a dev spec (use design-handoff).
+description: Run a structured UX critique on a screenshot, URL, or HTML snippet - a 0-4 score, up to 6 prioritized issues each with Before/After/Why, and one citation per claim. Given two or more variants, compares them on shared dimensions and names a winner. Given a screen plus a decision question, answers the question with the screen as evidence instead of returning a critique. Trigger phrases - "review this design", "critique this screen", "what's wrong with this UI", "score this design", "which of these two is better", "did the redesign improve this", "should I use a modal or a drawer". Do not use for WCAG-only accessibility audits (use accessibility-audit) or turning a mockup into a dev spec (use design-handoff).
 ---
 
 # Design review
@@ -46,11 +46,18 @@ Assign one score before listing issues. Use these bands exactly:
 
 Score generously when the design serves the project goals the user stated, if they stated any. Score harshly when it ignores them.
 
-More than one band will fit most screens. When two do, the cost of the fix decides which one wins - a rebuild, a restructure, a craft pass, 1-3 discrete fixes, or nothing material - and the violation count in band 1 is evidence of a structural problem, never a threshold that promotes a screen on its own. Five minor violations on a sound structure is a 2/4; one violation that blocks a task or fails an accessibility floor can be a 1/4 or 0/4 by itself. Count over what the review found, not over the 3-6 issues it reports - the cap in 2c decides what gets printed, not what the screen scores. Full rule in `references/review-rubric.md`.
+More than one band will fit most screens. When two do, the cost of the fix decides which one wins - a rebuild, a restructure, a craft pass, 1-3 discrete fixes, or nothing material - and the violation count in band 1 is evidence of a structural problem, never a threshold that promotes a screen on its own. Five minor violations on a sound structure is a 2/4; one violation that blocks a task or fails an accessibility floor can be a 1/4 or 0/4 by itself. Count over what the review found, not over the issues it reports - the cap in 2c decides what gets printed, not what the screen scores. Full rule in `references/review-rubric.md`.
 
-### 2c. Pick 3-6 issues, ranked by impact
+### 2c. Pick the issues, ranked by impact - at most 6
 
-Never list every flaw you notice - an exhaustive list is noise and noise is a failure mode of this skill. Rank by impact and stop at 6, even if more issues exist. If the artifact scores 4/4, still list 2-3 items, framed as polish, not blockers.
+Never list every flaw you notice - an exhaustive list is noise and noise is a failure mode of this skill. Rank by impact and stop at 6, even if more issues exist.
+
+Six is a cap, not a quota, and there is no minimum count. Report every issue that clears the impact bar and nothing else, so the list runs to whatever length the screen earns. Padding a thin list up to a floor is the same failure as listing every flaw, reached from the other side: the closing rules section says an item is either worth a place in the list or it is not, and that is what sets the length.
+
+An empty critique is still never the answer, so two floors hold:
+
+- **Nothing clears the bar.** That is what 4/4 means. Name the 2-3 strongest polish items instead, framed as polish, not blockers.
+- **Fewer than three clear it on a 0-3 screen.** Normal at 3/4, whose band is defined as 1-3 polish items. List the ones that did, and say in one line that the list is short because the screen is in good shape - without it, a two-item review reads as one that stopped early.
 
 For each issue, write exactly three lines:
 
@@ -166,7 +173,8 @@ A decision question with an artifact attached. The answer keeps the advisory sha
 |---|---|
 | Screenshot is blurry or too low-res to read text or spacing | Say so directly and ask for a higher-resolution image or a URL. Do not guess at what a blurry element says. |
 | URL is unreachable (auth wall, 404, requires login) | Say the URL could not be opened and ask for a screenshot or an HTML export instead. |
-| Artifact is already strong (would score 4/4) | Still produce the full numbered list - 2-3 items, framed as polish/nice-to-have, not as blockers. Never return an empty critique. |
+| Artifact is already strong (would score 4/4) | Nothing clears the impact bar, so name the 2-3 strongest polish items, framed as nice-to-have rather than as blockers. Never return an empty critique. |
+| Only one or two issues clear the impact bar (a 3/4 screen with a single polish item) | List those and stop, with one line saying the list is short because the screen is in good shape. Never pad to a count - there is no minimum, and an invented third issue is the failure 2c exists to prevent. |
 | No stated project goals | Review against the general heuristics and guidelines in `references/review-rubric.md` alone. Do not invent goals or a target audience. |
 | Advisory question too vague ("which is better?" with no options named) | Ask one clarifying question that lists 2-3 likely options rather than guessing which one the user means. |
 | Multiple distinct screens in one screenshot, no comparison asked for | Ask which one to review, or offer to review each separately if the user wants both. Two variants of the same screen with a "which is better" attached is comparison mode instead - do not ask the user to pick one for you. |
@@ -181,4 +189,4 @@ A decision question with an artifact attached. The answer keeps the advisory sha
 - One citation per issue or claim. Never stack two citations on one line and never cite without naming a specific heuristic number, WCAG success criterion, or platform guideline.
 - Every `After` (review mode), verdict (comparison mode), or claim (advisory and grounded advisory modes) must be concrete enough to hand to a developer or designer with no follow-up question.
 - Never invent a source, a study, or a statistic. If you are not sure a claim is grounded, cut the claim.
-- Keep the tone direct and factual. No hedging language like "this might possibly be an issue" - either it is an issue worth the 3-6 slot or it is not.
+- Keep the tone direct and factual. No hedging language like "this might possibly be an issue" - either it is an issue worth a place in the list or it is not.

@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0] - 2026-09-08
+
+- Settled the issue count, which shipped as two incompatible ranges. "3-6" stood in the frontmatter description, the step 2c heading, the closing rules line, the rubric twice and four README lines; "2-3" stood in step 2c's own body for a 4/4 screen, in the matching edge-case row and in a README bullet. The two ranges meet only at 3, so a 4/4 review returning two polish items broke the range stated in nine places, and one returning three satisfied both by accident.
+- Underneath that sat the larger half: band 3/4 is defined as "1-3 polish items remain", and the band-precedence rule added in 1.3.0 describes a 3/4 as the screen whose fix cost is one to three discrete fixes. The rubric therefore describes screens with one or two real issues, while step 2c set a floor of three for every band except 4/4. On a 3/4 screen with a single polish item the only legal moves were to pad the list to three, which the closing rule forbids by requiring every item to be worth its place, or to break the count. The cap of 6 always carried a reason - an exhaustive list is noise. The floor of 3 carried none.
+- Six is now stated as a cap and not a quota, with no minimum count: report every issue that clears the impact bar and nothing else, and let the list run to whatever length the screen earns. Padding a thin list is named as the same failure as listing every flaw, reached from the other side.
+- Two floors keep "never an empty critique" intact, and both are now consequences of one rule rather than exceptions with their own numbers. Nothing clears the bar, which is what 4/4 means, so name the 2-3 strongest polish items. Fewer than three clear it on a 0-3 screen, which is normal at 3/4, so list those and say in one line that the list is short because the screen is in good shape - otherwise a two-item review reads as one that stopped early.
+- Added an edge case for the short list, rewrote the 4/4 edge-case row to name the impact bar as the reason for its count, and reconciled every statement of the range in `SKILL.md`, `references/review-rubric.md` and the README so all of them agree.
+
 ## [1.3.0] - 2026-08-20
 
 - Added a band-precedence rule to `references/review-rubric.md`. Two bands fit most screens - a sound structure with six small heuristic violations matches band 1 by its count and band 2 by its description - and "assign exactly one score" never said which wins. The score is the first line a review prints and the number two runs get compared on, so the same screen could come back 1/4 one day and 2/4 the next without either being wrong.
