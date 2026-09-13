@@ -97,11 +97,13 @@ Use the bands from Step 2b, one score per artifact. The scores are a summary, no
 
 ### 3b. Compare on shared dimensions
 
-Pick 3-5 dimensions that matter for the job these screens do - for example hierarchy, clarity of the primary action, scan cost, accessibility, information density. Judge every artifact against every dimension, and keep the wording observable, the same standard as `Before` in review mode. A point that applies to only one artifact is a review note, not a comparison line - hold it for the closing "Worth fixing in the winner" list.
+Pick 3-5 dimensions that matter for the job these screens do - for example hierarchy, clarity of the primary action, scan cost, accessibility, information density. Judge every artifact against every dimension, and keep the wording observable, the same standard as `Before` in review mode. A point that applies to only one artifact is a review note, not a comparison line, and where it goes depends on which artifact it landed on. A point about the winner waits for the closing "Worth fixing in the winner" list. A point about a losing variant has no list of its own on purpose: a printed critique of the screen nobody is shipping is the "two critiques and no answer" failure this mode exists to prevent, reached from the other side. If it bears on the verdict it is already part of the argument, so state it in the paragraph that names the winner. If it does not, offer a full review of that variant in one line and stop there.
 
 ### 3c. Name a winner
 
 Always name one, even when the margin is small. A comparison that ends in "it depends" has not done the job. State what would change the call - the one fact about users, goals, or constraints that would flip it. If the honest answer is that the strongest screen takes parts from both, say which parts and from which variant.
+
+The closing fix list is capped at 3 and has no floor. The impact bar from Step 2c decides what goes in it, so a winner with nothing above that bar gets an empty list and says so. The two floors under 2c are review mode's: there the critique is the entire deliverable and an empty one is no answer at all, while here the verdict is the deliverable and it has already been given by the time this list starts. Padding the list to a count is the failure 2c names, and in this mode it also costs the verdict - an invented third issue in the winner reads as a reason to doubt the call.
 
 ### 3d. Output format - comparison mode
 
@@ -118,7 +120,9 @@ Always name one, even when the margin is small. A comparison that ends in "it de
 
 **What would change the call:** <the one fact that would flip the decision>
 
-**Worth fixing in the winner:** <1-3 issues, Before/After/Why, only if they survive the impact bar from Step 2c>
+**Worth fixing in the winner:** <0-3 issues, Before/After/Why, only ones that clear the impact bar from Step 2c - or "Nothing in the winner clears the impact bar.">
+
+<One line offering a full review of a losing variant, only when it carried points that never reached the verdict. Never a printed critique of the screen that lost.>
 ```
 
 Every artifact keeps its own column for its whole life in the table - never merge two variants into one "both" cell, because the point of the table is that the eye can run down one column.
@@ -178,6 +182,7 @@ A decision question with an artifact attached. The answer keeps the advisory sha
 | No stated project goals | Review against the general heuristics and guidelines in `references/review-rubric.md` alone. Do not invent goals or a target audience. |
 | Advisory question too vague ("which is better?" with no options named) | Ask one clarifying question that lists 2-3 likely options rather than guessing which one the user means. |
 | Multiple distinct screens in one screenshot, no comparison asked for | Ask which one to review, or offer to review each separately if the user wants both. Two variants of the same screen with a "which is better" attached is comparison mode instead - do not ask the user to pick one for you. |
+| The winner of a comparison has nothing above the impact bar (two strong variants, a 4/4 winner) | Name the winner and say the closing fix list is empty. The 4/4 floor in 2c belongs to review mode, where an empty critique is no deliverable at all; a comparison has already delivered the verdict, so 2-3 polish items added to reach a count only dilute it. |
 | One artifact in a comparison is unreadable or unreachable | Do not compare. Say which one failed and ask for a replacement - a comparison where half the evidence is a guess is worse than no comparison. |
 | The artifacts in a comparison are different screens, not variants of one (our pricing page vs a competitor's) | Comparison mode still applies, but the dimensions must be about the job both screens do, not about features only one of them has. Say so in one line before the table. |
 | An artifact is attached and the question is a decision question ("here is the screen - modal or drawer?") | Grounded advisory mode (Step 5). Answer the question first, with the artifact as evidence. A full review the user did not ask for leaves the question open, however well formed it is. |

@@ -35,7 +35,7 @@ design-review takes a UI screenshot, a live URL, or an HTML snippet and returns 
 - Switches to advisory mode for open decision questions ("modal or a full page for account deletion?") with no artifact attached.
 - Answers a decision question that arrives with a screen attached, using the screen as evidence, instead of handing back a critique that never reaches the question.
 - Asks for a better screenshot or a working URL when the input is unreadable.
-- Still surfaces 2-3 polish items on a design that would score 4/4 - never an empty pass.
+- Still surfaces 2-3 polish items when a review lands on a design that would score 4/4 - never an empty critique. A comparison is the one place the closing fix list can be empty, because there the verdict is the deliverable.
 
 ## Quick start
 
@@ -96,7 +96,46 @@ Fix this first: the missing password guidance is the highest-cost fix - most
 likely to cause a failed submit, and a one-line copy change.
 ```
 
-A decision question with a screen attached returns the other shape - the answer first, the
+A comparison of two variants returns the third shape - one table, one winner, and a
+fix list that only holds what clears the impact bar. Prompt: "Which of these two plan
+pickers is better?" (two images attached; both screens are invented for illustration):
+
+```
+## Plan picker A vs B - A 3/4, B 2/4
+
+| Dimension | A: three tiers | B: one plan led | Edge |
+|---|---|---|---|
+| Primary action | One filled "Start trial" per column, three on the screen | One filled "Start trial"; the other two plans are text links | B |
+| Scan cost | 11 feature rows repeated in all three columns | 4 rows on the led plan, the full table one tap away | B |
+| Price comparison | Three prices sit above the fold together | One price visible, two behind "Compare plans" | A |
+| Billing toggle | Sits above the columns; all three prices change with it | Sits inside the led plan's card; the two link prices do not move | A |
+
+Winner: A. The billing toggle decided it: in B the control sits inside one
+card while two of the three prices it changes sit outside that card and do
+not visibly respond, so the state of the screen after a tap cannot be read
+off the screen. Why: Nielsen heuristic #1 - visibility of system status. B
+takes both dimensions about reading the screen and A takes both about
+comparing it, which is a trade-off either team could defend; the toggle is
+the one row where the loss is a defect rather than a bet.
+
+What would change the call: if most visitors arrive on a plan-specific page
+and never compare tiers, B's single-plan lead is the right bet and its
+toggle is a contained fix.
+
+Worth fixing in the winner: one issue clears the impact bar.
+
+### 1. Three primary buttons compete
+- Before: all three columns carry a filled "Start trial" button at the same
+  weight.
+- After: keep the filled button on the recommended tier, make the other two
+  outlined.
+- Why: Nielsen heuristic #8 - aesthetic and minimalist design - three equal
+  primaries leave the screen with no default.
+
+Ask for a full review of B if you want its own issue list.
+```
+
+A decision question with a screen attached returns the last shape - the answer first, the
 critique only if it bears on the decision. Prompt: "Here's our checkout. Should the address
 form be a modal or a drawer?" (screenshot attached):
 
@@ -133,7 +172,7 @@ viewport, which hides the exit from the step being discussed.
 - **After fits inside an hour** - concrete enough to hand to a developer with no follow-up question.
 - **Why is exactly one citation:** a Nielsen heuristic, a WCAG 2.2 success criterion, or a named platform guideline - never an uncited opinion.
 - **The close names the one fix that matters most**, not a generic summary.
-- **Comparison mode judges variants against each other**, not one after the other: 3-5 shared dimensions, one row per dimension, an edge called on each, and a named winner with the one fact that would flip it.
+- **Comparison mode judges variants against each other**, not one after the other: 3-5 shared dimensions, one row per dimension, an edge called on each, and a named winner with the one fact that would flip it. The fix list that closes it is capped at three and can be empty - the verdict is what a comparison owes you, and an issue added to reach a count is a reason to doubt the verdict rather than a bonus. A point that belongs to a losing variant is never printed as a second critique: either it bears on the call, in which case it is already in the argument, or a full review of that variant is offered instead.
 - **Advisory mode compresses the same discipline** into one recommendation plus up to 5 cited bullets, asking one clarifying question instead of guessing when a request is too open.
 - **An attached screen raises the evidence bar, it does not change the question.** In grounded advisory mode every claim the screen can settle names an observable fact from it, the one fact that carried the call is stated outright, and anything the screen cannot settle is labeled as general guidance rather than dressed up as an observation.
 
@@ -159,7 +198,7 @@ This skill uses a 0-4 scale: 0 is broken (basic accessibility, hierarchy, or tru
 Yes, give it a URL. If the URL is unreachable - an auth wall or a 404 - it asks for a screenshot instead of guessing.
 
 **How do I compare two design variants and pick a winner?**
-Attach both and ask which one wins. That is comparison mode: each variant gets its own 0-4 score, then 3-5 shared dimensions are judged side by side in a table, and one variant is named the winner along with the fact that would change the call. It does not hand back two separate reviews, because two reviews still leave you to make the decision yourself. The same mode handles a before-and-after pair when you want to know whether a redesign actually improved anything.
+Attach both and ask which one wins. That is comparison mode: each variant gets its own 0-4 score, then 3-5 shared dimensions are judged side by side in a table, and one variant is named the winner along with the fact that would change the call. It does not hand back two separate reviews, because two reviews still leave you to make the decision yourself. Anything worth fixing in the winner follows, up to three items and sometimes none - the answer is the deliverable here, so nothing gets added to fill a list. Issues that belong only to the variant that lost are not printed either; ask for a review of that one and you get them. The same mode handles a before-and-after pair when you want to know whether a redesign actually improved anything.
 
 **What if I don't have a design yet, just a decision to make?**
 That's advisory mode: a direct question like "modal or full page for account deletion?" gets one recommendation plus up to 5 cited bullets.
