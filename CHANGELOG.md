@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.0] - 2026-09-18
+
+- Removed the last padding floor in the skill, which had survived in the two modes that answer a question rather than critique a screen. Step 4 said "Follow with 3 bullets (5 is the hard cap)", which sets a floor of three and a ceiling of five in one line, leaving 4 reachable with nothing saying how. The README had already moved on without it: "up to 5 cited bullets" stands in Usage, in how-it-works and in the FAQ, so a two-bullet advisory answer satisfied one file and broke the other.
+- Underneath it sat the same argument 1.4.0 and 1.5.0 settled for the other two modes. The closing rules refuse an invented source and say to cut a claim you are not sure is grounded, so a question with two grounded claims behind it can only reach three by breaking the rule that produced the number. Padding costs more here than in review mode: the recommendation is the entire deliverable, and a third reason invented to fill the shape is a reason to doubt the first two.
+- Five is now a cap and not a quota, with one claim as the floor rather than three. The floor is the skill's own spine and not a new number: the recommendation is itself a claim, and nothing here is answered without a citation behind the answer. When not one claim holds up, the question is not answerable from what was given, and the clarifying question Step 4 already has is the honest output instead of a recommendation resting on nothing.
+- Grounded advisory mode had no count rule at all in prose, only a template showing three bullets, and inherited "the advisory shape" from the mode whose shape was ambiguous. It now states that the count is Step 4's, and that an attached artifact raises the evidence bar without moving either end of the range.
+- Added two edge cases - an advisory answer with only one or two grounded claims, and one where no claim holds up - and matching updates to the README's advisory how-it-works bullet and FAQ answer, so every statement of the rule agrees.
+
 ## [1.5.0] - 2026-09-13
 
 - Added a comparison-mode example to the README. Comparison mode is named in the frontmatter description, in the README's opening paragraph, in What it does, in Usage and in an FAQ answer, and the repo shipped no rendered output for it anywhere - a reader could see the shape of a review and of a grounded advisory answer, but had to assemble the table, the verdict and the closing list from the format block in `SKILL.md`. The example shows two plan pickers, four dimensions with an edge called on each, a winner carried by one of them, and a closing list that stops at the single issue clearing the impact bar.

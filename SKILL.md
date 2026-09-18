@@ -132,7 +132,8 @@ Every artifact keeps its own column for its whole life in the table - never merg
 No artifact, a decision question instead. Skip the Before/After/Why structure entirely.
 
 - Give one direct recommendation in a single sentence.
-- Follow with 3 bullets (5 is the hard cap), each one claim plus one citation, same citation rules as review mode.
+- Follow with the claims that hold the recommendation up, one claim plus one citation each, same citation rules as review mode. Five is a cap and not a quota, the way six is in Step 2c: list the claims that are actually grounded and stop there. A sixth claim is cut for the same reason a seventh issue is, and a claim added to reach a count is the padding failure 2c names, arriving in the mode where it costs the most - the recommendation is the whole deliverable here, and an invented reason under it is a reason to doubt the answer.
+- One claim is the floor, and the reason is the skill's own spine: the recommendation is itself a claim, and this skill does not answer without a citation behind the answer. If not one claim holds up, the question is not answerable from what was given, and the clarifying question below is the honest output rather than a recommendation with nothing under it.
 - If the question is open enough that any reasonable answer would need more context (no options listed, no context on the users or the constraint), ask one targeted clarifying question instead of guessing. Surface 2-3 likely interpretations so the user can just pick one.
 
 ### Output format - advisory mode
@@ -152,6 +153,7 @@ If you want specifics, share a screenshot or a URL and I'll do a full review.
 A decision question with an artifact attached. The answer keeps the advisory shape; the artifact raises the evidence bar, it does not change what is being asked.
 
 - Answer the question first, in one sentence. The critique, if there is one at all, comes after.
+- The claim count is Step 4's: at most five, as many as are grounded, never padded to a number. An attached artifact raises the evidence bar and does not move either end of that range.
 - Every claim the artifact can settle rests on an observable fact from it, to the same standard as `Before` in review mode: "the address form is nine fields deep and the page already carries a sticky order summary", not "the form looks long". Claims the artifact cannot settle - traffic, device mix, what users do next - are still allowed as general guidance, but say which they are rather than dressing them as observations.
 - Name the one observable fact that carried the recommendation. If the artifact flips the answer you would have given without it, say so plainly: that is the entire value of having it attached.
 - If the artifact does not show the element the question is about, say so in one line and answer from general guidance. Never infer the missing element from the surrounding layout.
@@ -181,6 +183,8 @@ A decision question with an artifact attached. The answer keeps the advisory sha
 | Only one or two issues clear the impact bar (a 3/4 screen with a single polish item) | List those and stop, with one line saying the list is short because the screen is in good shape. Never pad to a count - there is no minimum, and an invented third issue is the failure 2c exists to prevent. |
 | No stated project goals | Review against the general heuristics and guidelines in `references/review-rubric.md` alone. Do not invent goals or a target audience. |
 | Advisory question too vague ("which is better?" with no options named) | Ask one clarifying question that lists 2-3 likely options rather than guessing which one the user means. |
+| Only one or two claims behind an advisory recommendation are actually grounded | List those and stop. Five is a cap and there is no floor above one, so a short answer is a complete one. A claim invented to reach a count breaks the citation floor that the recommendation itself rests on. |
+| An advisory question where not one claim holds up | Do not recommend. The citation floor makes an uncited answer no answer at all, so ask the clarifying question from Step 4 instead, listing the 2-3 readings that would each have a different answer. |
 | Multiple distinct screens in one screenshot, no comparison asked for | Ask which one to review, or offer to review each separately if the user wants both. Two variants of the same screen with a "which is better" attached is comparison mode instead - do not ask the user to pick one for you. |
 | The winner of a comparison has nothing above the impact bar (two strong variants, a 4/4 winner) | Name the winner and say the closing fix list is empty. The 4/4 floor in 2c belongs to review mode, where an empty critique is no deliverable at all; a comparison has already delivered the verdict, so 2-3 polish items added to reach a count only dilute it. |
 | One artifact in a comparison is unreadable or unreachable | Do not compare. Say which one failed and ask for a replacement - a comparison where half the evidence is a guess is worse than no comparison. |
