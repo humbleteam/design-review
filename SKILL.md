@@ -101,7 +101,7 @@ Pick 3-5 dimensions that matter for the job these screens do - for example hiera
 
 ### 3c. Name a winner
 
-Always name one, even when the margin is small. A comparison that ends in "it depends" has not done the job. State what would change the call - the one fact about users, goals, or constraints that would flip it. If the honest answer is that the strongest screen takes parts from both, say which parts and from which variant.
+Always name one, even when the margin is small. A comparison that ends in "it depends" has not done the job. State what would change the call - the one fact about users, goals, or constraints that would flip it. If the honest answer is that the strongest screen takes parts from more than one of them, say which parts and from which variant.
 
 The closing fix list is capped at 3 and has no floor. The impact bar from Step 2c decides what goes in it, so a winner with nothing above that bar gets an empty list and says so. The two floors under 2c are review mode's: there the critique is the entire deliverable and an empty one is no answer at all, while here the verdict is the deliverable and it has already been given by the time this list starts. Padding the list to a count is the failure 2c names, and in this mode it also costs the verdict - an invented third issue in the winner reads as a reason to doubt the call.
 
@@ -112,20 +112,22 @@ The closing fix list is capped at 3 and has no floor. The impact bar from Step 2
 
 | Dimension | <A> | <B> | Edge |
 |---|---|---|---|
-| <dimension> | <observable fact> | <observable fact> | <A or B> |
-| <dimension> | <observable fact> | <observable fact> | <A or B> |
-| <dimension> | <observable fact> | <observable fact> | <A or B> |
+| <dimension> | <observable fact> | <observable fact> | <who is ahead> |
+| <dimension> | <observable fact> | <observable fact> | <who is ahead> |
+| <dimension> | <observable fact> | <observable fact> | <who is ahead> |
 
-**Winner: <A or B>.** <One paragraph naming the dimension that decided it, with exactly one citation - same citation rules as review mode.>
+**Winner: <the artifact that wins>.** <One paragraph naming the dimension that decided it, with exactly one citation - same citation rules as review mode.>
 
 **What would change the call:** <the one fact that would flip the decision>
 
 **Worth fixing in the winner:** <0-3 issues, Before/After/Why, only ones that clear the impact bar from Step 2c - or "Nothing in the winner clears the impact bar.">
 
-<One line offering a full review of a losing variant, only when it carried points that never reached the verdict. Never a printed critique of the screen that lost.>
+<One line offering a full review of the losing variant, or of each losing variant by name, only when it carried points that never reached the verdict. Never a printed critique of a screen that lost.>
 ```
 
-Every artifact keeps its own column for its whole life in the table - never merge two variants into one "both" cell, because the point of the table is that the eye can run down one column.
+**The block above is drawn with two artifacts because two is the common case, not because the mode ends there.** Three or more grow it in one direction only: the header names every artifact and its score in the order they arrived (`<A> vs <B> vs <C> - <A> <X>/4, <B> <Y>/4, <C> <Z>/4`), and the table takes one column per artifact with `Edge` staying last. Everything else holds unchanged - one winner, one deciding dimension, one citation, one closing fix list and it is about the winner. Every artifact keeps its own column for its whole life in the table - never merge two variants into one "both" cell, because the point of the table is that the eye can run down one column.
+
+**The `Edge` cell names whichever artifacts are ahead on that row, never the overall winner.** One name is the usual case. Two names in a three-way table say those two are level with each other and ahead of the third, which is a finding about the row rather than a refusal to call it. `Tie` is the mark when none of them is ahead, and it earns a row only when being level is itself part of the argument - three variants failing the same contrast floor is a fact about all three, and the verdict paragraph is where it does its work. A row that ties and decides nothing means the dimension was the wrong pick under 3b: replace it with one that separates them rather than print a row the eye learns nothing from. Never break a tie to keep the column tidy. A distinction invented to fill a cell is the padding failure from 2c arriving inside the rows the verdict is built out of, which is the one place it cannot be discounted later.
 
 ## Step 4 - advisory mode
 
@@ -189,6 +191,8 @@ A decision question with an artifact attached. The answer keeps the advisory sha
 | The winner of a comparison has nothing above the impact bar (two strong variants, a 4/4 winner) | Name the winner and say the closing fix list is empty. The 4/4 floor in 2c belongs to review mode, where an empty critique is no deliverable at all; a comparison has already delivered the verdict, so 2-3 polish items added to reach a count only dilute it. |
 | One artifact in a comparison is unreadable or unreachable | Do not compare. Say which one failed and ask for a replacement - a comparison where half the evidence is a guess is worse than no comparison. |
 | The artifacts in a comparison are different screens, not variants of one (our pricing page vs a competitor's) | Comparison mode still applies, but the dimensions must be about the job both screens do, not about features only one of them has. Say so in one line before the table. |
+| Three or more artifacts arrive in one comparison | Comparison mode, unchanged. The header names every artifact and its score, the table takes one column per artifact with `Edge` last, and one winner is still named. Never split it into a two-way comparison plus a leftover review - the variant left out of the table is the one the user is deciding against. |
+| Two artifacts are level on a dimension while a third is behind them | The `Edge` cell names both, which says they are level with each other and ahead of the third. `Tie` is only for a row where none is ahead, and a row that ties and decides nothing belongs to a dimension that separates them instead. Never invent a gap to fill the cell - the rows are what the verdict is argued from. |
 | An artifact is attached and the question is a decision question ("here is the screen - modal or drawer?") | Grounded advisory mode (Step 5). Answer the question first, with the artifact as evidence. A full review the user did not ask for leaves the question open, however well formed it is. |
 | A decision question whose subject is not visible in the attached artifact (asked about the empty state, sent the filled one) | Say in one line that the artifact does not show it, then answer from general guidance and cite as usual. Do not infer the missing element from the surrounding layout. |
 | An artifact plus "is this any good?" or "what's wrong with this" | Review mode. These ask about the artifact's own quality rather than for a choice between options, so they are not decision questions. |
