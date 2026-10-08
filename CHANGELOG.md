@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.9.0] - 2026-10-08
+
+- Defined the arrival order the comparison output has run in since 1.7.0. The header names every artifact and its score "in the order they arrived" and the table's columns follow it, and nothing anywhere said what that order is. Two common inputs carry no sequence of their own: three variants exported from one frame arrive as a single image, and artifacts pasted together in one message arrive at once.
+- With the order undefined, sorting the columns by score was reachable and is the one ordering that cannot be used. The header and the columns are what a reader meets before a single row has argued anything, 3a is explicit that the scores are a summary and not the argument, and a table already sorted by them reads as a verdict the rows are there to decorate.
+- The order is now the order the user presented them in. Several artifacts inside one image take the image's reading order, left to right and then top to bottom, and the output says so in one line because the user did not give that order. Artifacts the user named take the order their names state, and a name beats position where the two disagree, since the name is the one the question was asked in.
+- A before-and-after pair keeps the before in the first column whatever it scored. "Did the redesign improve this" asks about a direction of change, and the same two screens printed the other way round answer whether the old one improved on the new one, which is a different question with the opposite answer. The order fixes what is compared to what and decides nothing about who wins.
+- Two edge-case rows added, for several artifacts inside one image and for a before-and-after pair, with the README's comparison how-it-works bullet and its comparison FAQ answer carrying the same rule.
+
 ## [1.8.0] - 2026-10-02
 
 - Bounded the comparison table. 1.7.0 gave the mode a shape for three or more artifacts and said it grows in one direction only, with no end stated. The table is `Dimension` plus one column per artifact plus `Edge`, so N artifacts make it N+2 wide, and the stated reason each artifact keeps its own column is that the eye runs down a column. A table too wide for the pane it renders in wraps, and a wrapped column has stopped being a column, so the shape kept accepting artifacts well past the point its own purpose held. Six variants were an eight-column table and the mode said to draw it.
