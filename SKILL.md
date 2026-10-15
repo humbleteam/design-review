@@ -105,6 +105,10 @@ Always name one, even when the margin is small. A comparison that ends in "it de
 
 The closing fix list is capped at 3 and has no floor. The impact bar from Step 2c decides what goes in it, so a winner with nothing above that bar gets an empty list and says so. The two floors under 2c are review mode's: there the critique is the entire deliverable and an empty one is no answer at all, while here the verdict is the deliverable and it has already been given by the time this list starts. Padding the list to a count is the failure 2c names, and in this mode it also costs the verdict - an invented third issue in the winner reads as a reason to doubt the call.
 
+**The 3 is derived rather than picked.** Band 3/4 is defined as 1-3 polish items remaining, and 2c's second floor already reads three issues on a screen that is otherwise right as normal for that band. This list is that same list, asked about the one artifact the team is going to ship: what is left to fix in a screen whose hierarchy and craft are mostly there. So the cap is the top of the band a winner sits in when polish is all that remains, which is also why a full list of 3 and a list of one are both complete - the length is the screen, not the template.
+
+**A winner that needs more than 3 fixes is a finding about the verdict, not a list to trim.** Past three the winner is below 3/4 and what is left is craft or structure rather than polish, so the fourth issue is not dropped quietly: the paragraph that names the winner says what the score leaves to do, next to the fact that would flip the call. The list itself still stops at 3, ranked by impact.
+
 ### 3d. Output format - comparison mode
 
 ```
@@ -167,7 +171,7 @@ A decision question with an artifact attached. The answer keeps the advisory sha
 - Every claim the artifact can settle rests on an observable fact from it, to the same standard as `Before` in review mode: "the address form is nine fields deep and the page already carries a sticky order summary", not "the form looks long". Claims the artifact cannot settle - traffic, device mix, what users do next - are still allowed as general guidance, but say which they are rather than dressing them as observations.
 - Name the one observable fact that carried the recommendation. If the artifact flips the answer you would have given without it, say so plainly: that is the entire value of having it attached.
 - If the artifact does not show the element the question is about, say so in one line and answer from general guidance. Never infer the missing element from the surrounding layout.
-- Close with at most 3 review-mode issues, and only ones that bear on the decision. Everything else waits for a full review - offer it in the closing line rather than smuggling an unrequested critique in under the answer.
+- Close with at most 3 review-mode issues, and only ones that bear on the decision. The 3 is 3c's and carries its derivation: in both modes the critique rides under something else that is the deliverable, and both lists stop where a screen that is otherwise right stops needing polish. Everything else waits for a full review - offer it in the closing line rather than smuggling an unrequested critique in under the answer.
 
 ### Output format - grounded advisory mode
 
