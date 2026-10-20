@@ -1,13 +1,5 @@
 # Changelog
 
-## [1.10.0] - 2026-10-15
-
-- Derived the cap on the comparison mode's closing fix list. The list has been capped at 3 since the mode was written, with the cap stated as a number and the reason for having a cap stated well, while the number itself was derived nowhere. The table's bound of five and the issue list's six both carry theirs, so this was the one count in the skill a reader had to take on trust.
-- The 3 is the top of band 3/4, which is defined as 1-3 polish items remaining in a screen whose hierarchy and craft are mostly right. Step 2c's second floor already leans on exactly that number, reading three issues on a screen that is otherwise right as normal for the band. The closing list is that same list asked about the one artifact the team is going to ship, so the cap is the band's top rather than a picked bound, and a full list of 3 and a list of one are both complete.
-- Named what more than three means, which the bare number left open. Past three the winner is below 3/4 and what remains is craft or structure rather than polish, so the fourth issue is not dropped quietly: the paragraph that names the winner says what the score leaves to do, beside the fact that would flip the call. The list still stops at 3, ranked by impact.
-- The grounded advisory close carries the same 3 and now points at that derivation instead of restating a bare number. In both modes the critique rides under something else that is the deliverable, and both lists stop where a screen that is otherwise right stops needing polish.
-- The README's comparison how-it-works bullet and its comparison FAQ answer carry the same derivation. No rule about what goes in either list changed, and no count moved.
-
 ## [1.9.0] - 2026-10-08
 
 - Defined the arrival order the comparison output has run in since 1.7.0. The header names every artifact and its score "in the order they arrived" and the table's columns follow it, and nothing anywhere said what that order is. Two common inputs carry no sequence of their own: three variants exported from one frame arrive as a single image, and artifacts pasted together in one message arrive at once.
