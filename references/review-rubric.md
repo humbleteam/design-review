@@ -26,6 +26,14 @@ Two bands describe the same screen more often than not. A screen with a sound st
 
 Count over everything the review found, not over the issues it reports. The cap of 6 in `SKILL.md` step 2c is a reporting cap: it decides what gets printed, never what the screen scores. It is a cap and not a quota, so this band reporting a single polish item is the rule working rather than a review that stopped early.
 
+### Where the 6 comes from
+
+The cap on the issue list is band 1's floor plus one, and it is derived from these bands rather than picked.
+
+Two bands name a count. Band 3/4 gives "1-3 polish items", which is where comparison mode's closing fix list gets its cap of 3. Band 1 gives "five or more heuristic violations", and five is therefore the largest number of issues any band asks a review to stand behind. A cap of five would land exactly on that floor, and a list sitting on its own cap cannot say which of two things it is: a complete band-1 list, or a longer one cut off at the limit. Step 2c's position on length is that the list is the screen and not the template, and the one length that cannot carry that is the length the cap chose. Six is the smallest cap that leaves band 1's own floor room to print in full and still read as finished.
+
+**A screen that yields a seventh issue is a finding about the band, not a list to trim.** The rule above already says a count is evidence of a structural problem, and past six that evidence is the answer: the screen is a 1/4 or a 0/4, where what it needs is a restructure or a rebuild rather than six fixes with a queue behind them. So the seventh issue is not dropped quietly - the paragraph that gives the score says the count itself is the finding, the same way comparison mode's verdict paragraph carries a fourth fix. The printed list still stops at 6, ranked by impact.
+
 ## Nielsen's 10 usability heuristics
 
 A compact citation table. Cite as `Nielsen heuristic #<n> - <name>`. Descriptions below are written for this skill, not quoted from any external source.
