@@ -135,6 +135,29 @@ Worth fixing in the winner: one issue clears the impact bar.
 Ask for a full review of B if you want its own issue list.
 ```
 
+A decision question with nothing attached returns the fourth shape - one recommendation,
+then only the claims that hold it up. Two bullets here is a complete answer rather than a
+truncated one: five is a cap and nothing pads a list up to it, so a third claim invented to
+fill the shape would be a reason to doubt the two that are real. Prompt: "Should I use a
+modal or a full-page flow for account deletion?" (nothing attached):
+
+```
+Recommendation: use a full-page flow for account deletion, not a modal.
+
+- Deletion is irreversible, so the confirm control belongs beside what it
+  removes, what is kept and for how long. A full page holds that copy
+  without scrolling it out of view behind the button. Why: Nielsen
+  heuristic #5 - error prevention - a destructive action needs its
+  consequences visible where it is confirmed.
+- The flow is usually several steps - re-authenticate, offer an export,
+  then confirm - and a dialog is scoped to one short focused task, so a
+  multi-step irreversible flow outgrows the pattern rather than fitting
+  inside it. Why: Material Design - dialogs - a dialog carries a single
+  decision, not a sequence of them.
+
+If you want specifics, share a screenshot or a URL and I'll do a full review.
+```
+
 A decision question with a screen attached returns the last shape - the answer first, the
 critique only if it bears on the decision. Prompt: "Here's our checkout. Should the address
 form be a modal or a drawer?" (screenshot attached):

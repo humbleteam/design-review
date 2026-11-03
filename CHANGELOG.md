@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0] - 2026-11-03
+
+- New worked example: advisory mode, the one of the four modes with no example anywhere in the repo. The README's Example output section walks the Usage list and prints a shape per entry - the review first, then the comparison it calls the third shape, then the grounded advisory it calls the last. Advisory mode is the fourth entry in that list, and its shape was the one the section skipped, so the mode whose cap 1.12.0 derived at length was also the mode a reader could not see an instance of.
+- The example is a decision question with nothing attached - modal or a full-page flow for account deletion - answered in the Step 4 format: one recommendation in a sentence, then the claims that hold it up with exactly one citation each and one phrase of rationale after it.
+- It runs to two bullets rather than five on purpose. The template cannot show that a short answer is a finished one, and that is the part of this mode a reader gets wrong: the lead-in says five is a cap and nothing pads a list up to it, so a third claim invented to fill the shape would be a reason to doubt the two that are real. That is the edge-case row for an advisory answer with one or two grounded claims, shown instead of restated.
+- `SKILL.md` was not touched. It already carries the output format and the derivation of the cap, and what was missing was an instance of them rather than a rule. No rule changed and no count moved.
+
 ## [1.12.0] - 2026-10-25
 
 - Derived advisory mode's cap of five cited bullets, the last count in the skill still asserted as a bare number - the gap 1.11.0 named on its way out. Step 4 said "five is a cap and not a quota, the way six is in Step 2c", which borrowed six's character and not its number, and the README's how-it-works bullet and FAQ answer both gave a reason for having a cap without deriving the five. A reader met the number four times and a derivation none.
