@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.14.0] - 2026-11-08
+
+- Derived Step 3b's dimension count, the fifth count in this skill asserted as a bare number. 1.12.0 closed by calling advisory mode's cap the last one; it counted four and 3b's `3-5` was never in the tally, so a reader still met one band with a derivation nowhere.
+- The ceiling of five reaches band 1's floor by the same route Step 5's cap does. A row is one assertion the verdict is argued from, which is the unit band 1 counts when it says five or more heuristic violations, so five is the most the rubric asks any single output to stand behind. It takes no plus-one for the reason Step 5's cap takes none: the rows print beside a score per artifact, not beside a count they are the evidence for, so a table stopping on its own cap has nothing to be ambiguous about.
+- The floor of 3 is removed rather than rederived, because it commanded what 3d's `Edge` rule refuses. That rule sends a row that ties and decides nothing back to 3b as the wrong pick, and calls a distinction invented to fill a cell 2c's padding failure landing where it cannot be discounted later. Two screens that genuinely differ on two dimensions left a floor of three asking for a third row that can only tie or invent a gap - both of them at once.
+- The list is now capped with no floor, the same shape as 3c's closing fix list and for the same reason: the length is the screens, not the template. A one-row table is complete when one dimension is what separates them, and that row is then the deciding dimension the verdict names.
+- New failure-mode row for one or two dimensions actually separating the artifacts. The README's how-it-works bullet and its comparison FAQ answer carry the cap, the missing floor and the reason, so `SKILL.md`, the bullet and the FAQ agree.
+- No other count moved: the six-issue cap, the three-item fix list, the five-artifact table width and advisory mode's five bullets are unchanged, and `references/review-rubric.md` never named a dimension count.
+
 ## [1.13.0] - 2026-11-03
 
 - New worked example: advisory mode, the one of the four modes with no example anywhere in the repo. The README's Example output section walks the Usage list and prints a shape per entry - the review first, then the comparison it calls the third shape, then the grounded advisory it calls the last. Advisory mode is the fourth entry in that list, and its shape was the one the section skipped, so the mode whose cap 1.12.0 derived at length was also the mode a reader could not see an instance of.
