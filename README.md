@@ -217,6 +217,9 @@ At minimum, Nielsen's 10 heuristics: system status, real-world match, user contr
 **How do I score design quality?**
 This skill uses a 0-4 scale: 0 is broken (basic accessibility, hierarchy, or trust violations), 4 is ship-ready. Bands live in `references/review-rubric.md`, along with the rule for the common case where two bands fit the same screen: the cost of the fix decides - a rebuild, a restructure, a craft pass, one to three discrete fixes, or nothing material - and a count of violations is evidence rather than a threshold, so five small ones on a sound structure score better than a single one that blocks the task. Score generously when a design serves its stated goals, harshly when it ignores them.
 
+**Do I need to tell it what the product or audience is?**
+No, but it changes the score when you do. With no stated goals the review runs against the heuristics and guidelines in `references/review-rubric.md` alone, and it does not invent a target audience or a business goal to judge against. When you state one - "this signup is for busy clinicians on mobile" - the score moves with it: generous when the design serves that goal, harsh when it ignores it. One sentence of context is enough, and it is the cheapest way to get a review about your product rather than about screens in general.
+
 **Can this review a live website instead of a screenshot?**
 Yes, give it a URL. If the URL is unreachable - an auth wall or a 404 - it asks for a screenshot instead of guessing.
 

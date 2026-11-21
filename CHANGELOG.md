@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.15.0] - 2026-11-21
+
+- New FAQ answer: whether the review needs to know the product or audience. `SKILL.md` already scored against stated goals when given and fell back to the rubric alone, inventing no audience, when not; the README never told a reader that one sentence of context moves the score. No rule changed and no count moved.
+
 ## [1.14.0] - 2026-11-08
 
 - Derived Step 3b's dimension count, the fifth count in this skill asserted as a bare number. 1.12.0 closed by calling advisory mode's cap the last one; it counted four and 3b's `3-5` was never in the tally, so a reader still met one band with a derivation nowhere.
