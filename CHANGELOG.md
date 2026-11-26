@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.16.0] - 2026-11-26
+
+- New edge case: the user says the copy is placeholder. Copy is left out of the score and the issue list, with one line saying it was not reviewed; band 1's placeholder-copy wording stays for copy that ships, and applies unchanged when the user says nothing.
+
 ## [1.15.0] - 2026-11-21
 
 - New FAQ answer: whether the review needs to know the product or audience. `SKILL.md` already scored against stated goals when given and fell back to the rubric alone, inventing no audience, when not; the README never told a reader that one sentence of context moves the score. No rule changed and no count moved.
